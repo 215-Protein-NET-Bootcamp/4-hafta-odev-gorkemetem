@@ -42,7 +42,7 @@ namespace HomeworkApi
                 };
 
                 QueryResource pagintation = new QueryResource(page, pageSize);
-                var result = await personService.GetPaginationAsync(pagintation, null);
+                var result = await personService.GetPaginationAsync(pagintation, query);
 
                 if (!result.Success)
                     return BadRequest(result);
@@ -56,38 +56,11 @@ namespace HomeworkApi
                     Priority = CacheItemPriority.Normal
                 };
 
-                // set cashe
+                //set cashe
                 memoryCache.Set(cacheKey, result, cacheExpOptions);
                 return Ok(result);
             }
             return Ok(casheList);   
-        }
-
-        [Route("GetAll")]
-        [HttpGet]
-        public virtual async Task<IActionResult> GetAllAsync([FromQuery] string cacheKey)
-        {
-            if (!memoryCache.TryGetValue(cacheKey, out var casheList))
-            {
-                var result = await personService.GetAllAsync();
-
-                if (!result.Success)
-                    return BadRequest(result);
-
-                if (result.Response is null)
-                    return NoContent();
-
-                var cacheExpOptions = new MemoryCacheEntryOptions
-                {
-                    AbsoluteExpiration = DateTime.Now.AddMinutes(30),
-                    Priority = CacheItemPriority.Normal
-                };
-
-                // set cashe
-                memoryCache.Set(cacheKey, result, cacheExpOptions);
-                return Ok(result);
-            }
-            return Ok(casheList);
-        }
+        } 
     }
 }
