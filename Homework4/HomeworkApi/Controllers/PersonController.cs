@@ -33,7 +33,6 @@ namespace HomeworkApi
 
             if (!memoryCache.TryGetValue(cacheKey, out var casheList))
             {
-
                 PersonDto query = new PersonDto()
                 {
                     StaffId = "test",
@@ -43,7 +42,6 @@ namespace HomeworkApi
                 };
 
                 QueryResource pagintation = new QueryResource(page, pageSize);
-
                 var result = await personService.GetPaginationAsync(pagintation, null);
 
                 if (!result.Success)
@@ -62,20 +60,15 @@ namespace HomeworkApi
                 memoryCache.Set(cacheKey, result, cacheExpOptions);
                 return Ok(result);
             }
-            return Ok(casheList);
-            
+            return Ok(casheList);   
         }
 
         [Route("GetAll")]
         [HttpGet]
         public virtual async Task<IActionResult> GetAllAsync([FromQuery] string cacheKey)
         {
-
-
             if (!memoryCache.TryGetValue(cacheKey, out var casheList))
             {
-
-
                 var result = await personService.GetAllAsync();
 
                 if (!result.Success)
@@ -96,6 +89,5 @@ namespace HomeworkApi
             }
             return Ok(casheList);
         }
-
     }
 }
