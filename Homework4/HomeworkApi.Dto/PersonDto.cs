@@ -32,7 +32,6 @@ namespace HomeworkApi.Dto
         public string Phone { get; set; }
 
         [Required]
-        [DateOfBirth]
         [DataType(DataType.Date)]
         [Display(Name = "DateOfBirth")]
         public DateTime DateOfBirth { get; set; }

@@ -19,16 +19,16 @@ namespace HomeworkApi
         }
 
         public IConfiguration Configuration { get; }
-        public static JwtConfig JwtConfig { get; private set; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
 
-            // Configure JWT Bearer
-            JwtConfig = Configuration.GetSection("JwtConfig").Get<JwtConfig>();
-            services.Configure<JwtConfig>(Configuration.GetSection("JwtConfig"));
+            // memoryCashe
+            services.AddMemoryCache();
+
+            
 
             // add Filter
             services.AddMvc(options =>
@@ -37,7 +37,6 @@ namespace HomeworkApi
             });
 
             // services
-            services.AddJwtBearerAuthentication();
             services.AddServicesDependencyInjection();
             services.AddContextDependencyInjection(Configuration);
             services.AddCustomizeSwagger();
