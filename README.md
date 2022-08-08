@@ -3,7 +3,5 @@
 ![swagger](ScreenShots/Homework4.PNG)
 
 Bu projede PersonController'da bulunan bir methoda MemoryCache implemente edilmiştir. Eğer data cache'de bulunuyorsa data'nın database'den değil cache'den gönderilmesi amaçlanmıştır. Aşağıda swagger üzerinde yapılan testlerin ekran görüntüleri bulunmaktadır.
-
-    PersonController'daki method MemoryCache ile çalışacak hale getirildi.
 ![swagger](ScreenShots/Person.PNG)
 ![swagger](ScreenShots/Person2.PNG)
