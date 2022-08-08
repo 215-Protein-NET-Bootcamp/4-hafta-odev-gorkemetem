@@ -2,6 +2,6 @@
 
 ![swagger](ScreenShots/Homework4.PNG)
 
-    MemoryCache implemented in Person Controller
+    PersonController'daki istenilen fonksiyona MemoryCache implemente edildi.
 ![swagger](ScreenShots/Person.PNG)
 ![swagger](ScreenShots/Person2.PNG)
